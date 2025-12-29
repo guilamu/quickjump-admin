@@ -1,0 +1,577 @@
+/**
+ * QuickJump Admin - Admin Bar Dropdown Styles
+ *
+ * @package QuickJump_Admin
+ */
+
+/* ============================================================================
+   ADMIN BAR BUTTON
+   ============================================================================ */
+
+#wp-admin-bar-quickjump-admin>.ab-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px;
+    cursor: pointer !important;
+}
+
+#wp-admin-bar-quickjump-admin>.ab-item .ab-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px !important;
+}
+
+#wp-admin-bar-quickjump-admin>.ab-item .ab-icon::before {
+    content: "\f103" !important;
+    font-family: dashicons !important;
+    top: 2px;
+}
+
+/* ============================================================================
+   DROPDOWN CONTAINER
+   ============================================================================ */
+
+.quickjump-dropdown {
+    position: fixed;
+    top: 32px;
+    /* Height of admin bar */
+    z-index: 99999;
+    width: 340px;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Mobile admin bar is 46px tall */
+@media screen and (max-width: 782px) {
+    .quickjump-dropdown {
+        top: 46px;
+    }
+}
+
+/* Custom scrollbar */
+.quickjump-dropdown::-webkit-scrollbar {
+    width: 6px;
+}
+
+.quickjump-dropdown::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.quickjump-dropdown::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.quickjump-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* ============================================================================
+   SEARCH
+   ============================================================================ */
+
+.quickjump-search-container {
+    position: relative;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    background: #f9f9f9;
+}
+
+.quickjump-search {
+    width: 100% !important;
+    padding: 8px 12px 8px 40px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    outline: none !important;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box !important;
+    background: #fff !important;
+    color: #1e1e1e !important;
+    text-indent: 0 !important;
+}
+
+.quickjump-search:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+.quickjump-search-icon {
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================================================
+   SECTIONS
+   ============================================================================ */
+
+.quickjump-section {
+    padding: 0;
+}
+
+.quickjump-section:not(:last-child) {
+    border-bottom: 1px solid #eee;
+}
+
+.quickjump-section-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 12px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #666;
+    background: #fafafa;
+}
+
+.quickjump-section-header .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+}
+
+/* ============================================================================
+   LINK LIST
+   ============================================================================ */
+
+.quickjump-links {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.quickjump-link-item {
+    display: flex !important;
+    align-items: center !important;
+    border-bottom: 1px solid #f5f5f5;
+    transition: background-color 0.15s;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.quickjump-link-item:last-child {
+    border-bottom: none;
+}
+
+.quickjump-link-item:hover {
+    background: #f0f6fc;
+}
+
+.quickjump-link-item.is-pinned {
+    background: #fffbe6;
+}
+
+.quickjump-link-item.is-pinned:hover {
+    background: #fff3cd;
+}
+
+.quickjump-link {
+    flex: 1;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
+    padding: 10px 12px !important;
+    color: #1e1e1e !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    min-width: 0;
+    height: auto !important;
+}
+
+.quickjump-link:hover {
+    color: #2271b1 !important;
+    background: transparent !important;
+}
+
+.quickjump-link-icon {
+    flex-shrink: 0;
+    font-size: 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+    color: #666;
+}
+
+.quickjump-link-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.quickjump-link-time {
+    flex-shrink: 0;
+    font-size: 11px !important;
+    color: #999 !important;
+    margin-left: auto;
+}
+
+.quickjump-link-count {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    background: #2271b1;
+    color: #fff !important;
+    font-size: 10px !important;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+/* ============================================================================
+   PIN BUTTON
+   ============================================================================ */
+
+.quickjump-pin-btn {
+    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px;
+    height: 100%;
+    min-height: 40px;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    color: #ccc;
+    transition: color 0.15s;
+}
+
+.quickjump-pin-btn:hover {
+    color: #f0b849;
+    background: transparent !important;
+}
+
+.quickjump-pin-btn .dashicons {
+    font-size: 14px !important;
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.quickjump-link-item.is-pinned .quickjump-pin-btn {
+    color: #f0b849;
+}
+
+/* ============================================================================
+   EDIT BUTTON
+   ============================================================================ */
+
+.quickjump-edit-btn {
+    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px;
+    height: 100%;
+    min-height: 40px;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    color: #888;
+    transition: color 0.15s;
+    opacity: 0;
+}
+
+.quickjump-link-item:hover .quickjump-edit-btn {
+    opacity: 1;
+}
+
+.quickjump-edit-btn:hover {
+    color: #2271b1;
+    background: transparent !important;
+}
+
+.quickjump-edit-btn .dashicons {
+    font-size: 12px !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+/* ============================================================================
+   HIDE BUTTON
+   ============================================================================ */
+
+.quickjump-hide-btn {
+    flex-shrink: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px;
+    height: 100%;
+    min-height: 40px;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    color: #888;
+    transition: color 0.15s;
+    opacity: 0;
+}
+
+.quickjump-link-item:hover .quickjump-hide-btn {
+    opacity: 1;
+}
+
+.quickjump-hide-btn:hover {
+    color: #d63638;
+    background: transparent !important;
+}
+
+.quickjump-hide-btn .dashicons {
+    font-size: 12px !important;
+    width: 12px !important;
+    height: 12px !important;
+}
+
+/* ============================================================================
+   RENAME INPUT
+   ============================================================================ */
+
+.quickjump-rename-input {
+    flex: 1;
+    padding: 4px 8px !important;
+    margin: 0 4px !important;
+    font-size: 13px !important;
+    border: 1px solid #2271b1 !important;
+    border-radius: 3px !important;
+    background: #fff !important;
+    color: #1d2327 !important;
+    outline: none !important;
+    min-width: 100px;
+}
+
+.quickjump-rename-input:focus {
+    box-shadow: 0 0 0 1px #2271b1 !important;
+}
+
+.quickjump-link-item.is-editing .quickjump-link {
+    flex-wrap: wrap;
+}
+
+.quickjump-link-item.is-editing .quickjump-link-icon {
+    display: none;
+}
+
+/* ============================================================================
+   EMPTY STATE
+   ============================================================================ */
+
+.quickjump-empty {
+    padding: 16px 12px;
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+/* ============================================================================
+   SETTINGS TABS
+   ============================================================================ */
+
+.qj-tab-content {
+    display: none;
+}
+
+.qj-tab-content.active {
+    display: block;
+    animation: qj-fade-in 0.3s ease;
+}
+
+@keyframes qj-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+
+.quickjump-footer {
+    padding: 8px 12px;
+    background: #f9f9f9;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.quickjump-settings-link {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px;
+    color: #666 !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+    transition: color 0.15s;
+}
+
+.quickjump-settings-link:hover {
+    color: #2271b1 !important;
+}
+
+.quickjump-settings-link .dashicons {
+    font-size: 14px !important;
+    width: 14px !important;
+    height: 14px !important;
+}
+
+/* ============================================================================
+   SEARCH RESULTS
+   ============================================================================ */
+
+.quickjump-search-results .quickjump-section-header {
+    background: #e8f4fc;
+    color: #2271b1;
+}
+
+/* ============================================================================
+   LOADING STATE
+   ============================================================================ */
+
+.quickjump-loading {
+    padding: 24px;
+    text-align: center;
+    color: #999;
+}
+
+.quickjump-loading::after {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ddd;
+    border-top-color: #2271b1;
+    border-radius: 50%;
+    animation: quickjump-spin 0.8s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+@keyframes quickjump-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================================================
+   SIDE BY SIDE LAYOUT
+   ============================================================================ */
+
+.quickjump-dropdown.side-by-side {
+    width: 600px !important;
+}
+
+.quickjump-dropdown.side-by-side #quickjump-main-content {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.quickjump-dropdown.side-by-side .quickjump-pinned {
+    width: 100% !important;
+    flex-shrink: 0 !important;
+}
+
+/* Make pinned items display in two columns aligned with sections below */
+.quickjump-dropdown.side-by-side .quickjump-pinned .quickjump-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.quickjump-dropdown.side-by-side .quickjump-pinned .quickjump-link-item {
+    width: 50% !important;
+    box-sizing: border-box !important;
+    border-bottom: none !important;
+}
+
+.quickjump-dropdown.side-by-side .quickjump-pinned .quickjump-link-item:nth-child(odd) {
+    border-right: 1px solid #eee !important;
+}
+
+.quickjump-dropdown.side-by-side .quickjump-section.quickjump-recent,
+.quickjump-dropdown.side-by-side .quickjump-section.quickjump-mostused {
+    width: 50% !important;
+    box-sizing: border-box !important;
+    border-bottom: none !important;
+}
+
+.quickjump-dropdown.side-by-side .quickjump-section.quickjump-recent {
+    border-right: 1px solid #eee !important;
+}
+
+.quickjump-dropdown.side-by-side .quickjump-section:not(:last-child) {
+    border-bottom: none !important;
+}
+
+@media screen and (max-width: 782px) {
+    .quickjump-dropdown.side-by-side {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .quickjump-dropdown.side-by-side .quickjump-recent,
+    .quickjump-dropdown.side-by-side .quickjump-mostused {
+        width: 100%;
+        border-right: none;
+    }
+
+    .quickjump-dropdown.side-by-side .quickjump-recent {
+        border-bottom: 1px solid #eee;
+    }
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media screen and (max-width: 782px) {
+    .quickjump-dropdown {
+        width: 300px;
+        max-height: 60vh;
+    }
+
+    #wp-admin-bar-quickjump-admin>.ab-item .ab-label {
+        display: none;
+    }
+
+    .quickjump-search {
+        font-size: 16px;
+        /* Prevent zoom on iOS */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .quickjump-dropdown {
+        width: 280px;
+        left: 0 !important;
+        right: auto !important;
+    }
+
+    .quickjump-link-time {
+        display: none;
+    }
+}
