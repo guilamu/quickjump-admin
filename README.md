@@ -2,6 +2,8 @@
 
 Navigate faster in WordPress admin with intelligent shortcuts to your recently and frequently accessed pages.
 
+![Plugin Screenshot](https://github.com/guilamu/quickjump-admin/edit/main/screenshot.jpg)
+
 ## Smart Navigation
 
 - Track all admin page visits automatically
@@ -114,3 +116,4 @@ This project is licensed under the GNU Affero General Public License v3.0 (AGPL-
 <p align="center">
   Made with love for the WordPress community
 </p>
+
