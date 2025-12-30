@@ -2,7 +2,7 @@
 
 Navigate faster in WordPress admin with intelligent shortcuts to your recently and frequently accessed pages.
 
-![Plugin Screenshot](https://github.com/guilamu/quickjump-admin/edit/main/screenshot.jpg)
+![Plugin Screenshot](https://github.com/guilamu/quickjump-admin/blob/main/screenshot.jpg)
 
 ## Smart Navigation
 
@@ -116,4 +116,5 @@ This project is licensed under the GNU Affero General Public License v3.0 (AGPL-
 <p align="center">
   Made with love for the WordPress community
 </p>
+
 
