@@ -35,6 +35,7 @@ jobs:
                     --exclude='node_modules' \
                     --exclude='.DS_Store' \
                     --exclude='*.md' \
+                    --exclude='screenshot*.*' \
                     ./ build/quickjump-admin/
           
           # Include README.md (useful for users)
