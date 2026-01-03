@@ -2,8 +2,6 @@
 
 Navigate faster in WordPress admin with intelligent shortcuts to your recently and frequently accessed pages.
 
-![Plugin Screenshot](https://github.com/guilamu/quickjump-admin/blob/main/screenshot.jpg)
-
 ## Smart Navigation
 
 - Track all admin page visits automatically
@@ -94,6 +92,9 @@ A daily cron job automatically removes data older than the retention period (def
 
 ## Changelog
 
+### 1.0.1
+- **Fixed:** Shortcut menu now uses the same dark theme as the WordPress admin bar
+
 ### 1.0.0
 - Initial release
 - **New:** Admin bar dropdown with hover activation
@@ -116,5 +117,3 @@ This project is licensed under the GNU Affero General Public License v3.0 (AGPL-
 <p align="center">
   Made with love for the WordPress community
 </p>
-
-
