@@ -34,24 +34,16 @@
 		 * Initialize the module
 		 */
 		init: function () {
-			console.log('QuickJump: Initializing...');
-
 			this.$dropdown = $('#quickjump-dropdown');
 			this.$trigger = $('#wp-admin-bar-quickjump-admin');
 
-			console.log('QuickJump: Dropdown found:', this.$dropdown.length);
-			console.log('QuickJump: Trigger found:', this.$trigger.length);
-
 			if (!this.$dropdown.length || !this.$trigger.length) {
-				console.log('QuickJump: Missing elements, aborting init');
 				return;
 			}
 
 			this.positionDropdown();
 			this.bindEvents();
 			this.updateRelativeTimes();
-
-			console.log('QuickJump: Initialization complete');
 
 			// Update relative times every minute
 			setInterval(this.updateRelativeTimes.bind(this), 60000);
@@ -95,17 +87,6 @@
 		 */
 		bindEvents: function () {
 			const self = this;
-			console.log('QuickJump: Binding events...');
-
-			// Debug: Log ALL clicks inside dropdown
-			this.$dropdown.on('click', function (e) {
-				console.log('QuickJump: Click inside dropdown', e.target, e.target.className);
-			});
-
-			// Debug: Log clicks on buttons specifically
-			this.$dropdown.on('click', 'button', function (e) {
-				console.log('QuickJump: Button clicked!', $(this).attr('class'), $(this).attr('data-id'));
-			});
 
 			// Show dropdown on hover
 			this.$trigger.on('mouseenter', function () {
@@ -153,7 +134,6 @@
 			this.$dropdown.on('click', '.quickjump-pin-btn', function (e) {
 				e.preventDefault();
 				e.stopPropagation();
-				console.log('QuickJump: Pin button handler executing', $(this).attr('data-id'));
 				self.togglePin($(this));
 			});
 
