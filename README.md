@@ -1,193 +1,123 @@
-# Gravity Forms - French Schools
+# QuickJump Admin
 
-Extension Gravity Forms permettant aux utilisateurs de rechercher et sélectionner un établissement scolaire français via l'API officielle du Ministère de l'Éducation Nationale.
+Navigate faster in WordPress admin with intelligent shortcuts to your recently and frequently accessed pages.
 
-![Plugin Screenshot](https://github.com/guilamu/gf-french-schools/blob/main/screenshot.jpg)
+## Smart Navigation
 
-## Description
+- Track all admin page visits automatically
+- View your last 10 recent links from the past 24 hours (configurable)
+- Access your top 10 most frequently used pages over the last 30 days (configurable)
+- Pin important pages for instant access
 
-Ce plugin ajoute un nouveau type de champ "Écoles françaises" à Gravity Forms. Il permet aux utilisateurs de :
+## Quick Access Dropdown
 
-- Sélectionner le statut de l'établissement (Public/Privé)
-- Choisir un département français
-- Rechercher une ville par auto-complétion
-- Rechercher un établissement scolaire par auto-complétion
-- Afficher les informations détaillées de l'établissement sélectionné
+- Hover-activated dropdown in the admin bar (no click required)
+- Search within your navigation history
+- Visual icons for different content types (posts, pages, media, settings)
+- Relative timestamps showing "2 hours ago" style timing
+- Access count badges for most-used pages
 
-Les données proviennent de l'[Annuaire de l'Éducation Nationale](https://data.education.gouv.fr/explore/dataset/fr-en-annuaire-education/) via l'API OpenDataSoft.
+## Full Control
 
-## Prérequis
+- Customize number of links displayed (1-50)
+- Set time windows for recent and most-used calculations
+- Define excluded URL patterns with regex support
+- Automatic cleanup of old data based on retention period
 
-- WordPress 5.8 ou supérieur
-- PHP 7.4 ou supérieur
-- [Gravity Forms](https://www.gravityforms.com/) 2.5 ou supérieur
+## Key Features
+
+- **Per-User Data:** Each user has their own private navigation history
+- **Performance Optimized:** WordPress transients cache with database indexes
+- **Multilingual:** Works with content in any language
+- **Translation-Ready:** All strings are internationalized with POT file included
+- **Secure:** Nonce verification, capability checks, prepared SQL statements
+- **GitHub Updates:** Automatic updates from GitHub releases
+
+## Requirements
+
+- WordPress 5.8 or higher
+- PHP 7.4 or higher
 
 ## Installation
 
-1. Téléchargez le plugin depuis [GitHub Releases](https://github.com/guilamu/gf-french-schools/releases)
-2. Uploadez le dossier `gf-french-schools` dans `/wp-content/plugins/`
-3. Activez le plugin dans le menu "Extensions" de WordPress
-4. Le nouveau type de champ "Écoles françaises" sera disponible dans l'éditeur de formulaires Gravity Forms
+1. Upload the `quickjump-admin` folder to `/wp-content/plugins/`
+2. Activate the plugin through the **Plugins** menu in WordPress
+3. Start navigating — tracking begins automatically
+4. Hover over **Shortcuts** in the admin bar to access your pages
+5. Go to **Settings → QuickJump Admin** to customize options
 
-## Configuration
+## FAQ
 
-### Paramètres du champ
+### How does the tracking work?
 
-Dans l'éditeur de formulaire, le champ "Écoles françaises" propose les options suivantes :
+The plugin automatically records each admin page you visit, storing the URL, page title, timestamp, and incrementing the visit count. Data is stored per-user and never shared.
 
-#### Présélection
-- **Statut présélectionné** : Définir Public ou Privé par défaut (le champ sera masqué)
-- **Département présélectionné** : Définir un département par défaut (le champ sera masqué)
+### Can I exclude certain pages from tracking?
 
-#### Filtres par type d'établissement
-- **Masquer les écoles primaires** : Exclut les écoles maternelles et élémentaires des résultats
-- **Masquer les collèges et lycées** : Exclut les établissements secondaires des résultats
+Yes, go to **Settings → QuickJump Admin** and add URL patterns to the "Excluded URL patterns" field. Both regex and simple string matching are supported.
 
-## Données collectées
+### How do I pin a page?
 
-Pour chaque établissement sélectionné, les informations suivantes sont enregistrées :
+Hover over the Shortcuts dropdown and click the star icon next to any link. Pinned items appear at the top and are preserved during cleanup.
 
-| Champ | Description |
-|-------|-------------|
-| Identifiant | Code UAI de l'établissement |
-| Nom | Nom de l'établissement |
-| Type | Collège, Lycée, École, etc. |
-| Catégorie | Maternelle, Élémentaire, etc. |
-| Adresse | Adresse postale |
-| Code postal | Code postal |
-| Ville | Commune |
-| Téléphone | Numéro de téléphone |
-| E-mail | Adresse email |
-| Éducation prioritaire | REP, REP+, ou Non |
+### Can I change the button label?
 
-## Merge Tags
+Yes, go to **Settings → QuickJump Admin** and modify the "Admin bar button label" field to any text you prefer.
 
-Accédez aux données de l'établissement dans les notifications et confirmations :
+### How is old data cleaned up?
 
-| Merge Tag | Description |
-|-----------|-------------|
-| `{Libellé:ID}` | Nom de l'établissement (par défaut) |
-| `{Libellé:ID:id}` | Identifiant UAI |
-| `{Libellé:ID:nom}` | Nom de l'établissement |
-| `{Libellé:ID:type}` | Type d'établissement |
-| `{Libellé:ID:nature}` | Catégorie |
-| `{Libellé:ID:adresse}` | Adresse |
-| `{Libellé:ID:code_postal}` | Code postal |
-| `{Libellé:ID:commune}` | Ville |
-| `{Libellé:ID:telephone}` | Téléphone |
-| `{Libellé:ID:mail}` | Email |
-| `{Libellé:ID:education_prioritaire}` | Statut éducation prioritaire |
-| `{Libellé:ID:all}` | Toutes les informations |
+A daily cron job automatically removes data older than the retention period (default: 90 days). Pinned items are always preserved.
 
-Remplacez `Libellé` par le libellé de votre champ et `ID` par le numéro d'identifiant du champ.
-
-## Mises à jour automatiques
-
-Le plugin supporte les mises à jour automatiques depuis GitHub. Lorsqu'une nouvelle version est publiée, WordPress vous proposera la mise à jour dans la page Extensions.
-
-## Traduction
-
-Le plugin est entièrement traduisible et inclut une traduction française complète.
-
-## Structure du projet
+## Project Structure
 
 ```
 .
-├── .github
-│   └── workflows
-│       └── release.yml                # GitHub Actions release workflow
-├── gf-french-schools.php
+├── quickjump-admin.php           # Main plugin file with headers
+├── uninstall.php                 # Database and options cleanup
 ├── README.md
-├── assets
+├── admin
 │   ├── css
-│   │   ├── ecoles-fr-admin.css        # styles éditeur GF
-│   │   └── ecoles-fr.css              # styles frontend + bloc résultat
+│   │   └── admin.css             # Dropdown and menu styles
 │   └── js
-│       ├── ecoles-fr-admin.js         # réglages custom dans l’éditeur GF
-│       └── ecoles-fr-frontend.js      # logique cascade, autocomplétion, accessibilité
+│       └── admin.js              # Search, pin, and AJAX handlers
 ├── includes
-│   ├── class-ecoles-api-service.php   # client OpenDataSoft + cache
-│   ├── class-gf-field-ecoles-fr.php   # définition du champ GF, rendu, validation
-│   └── class-github-updater.php       # mise à jour GitHub
+│   ├── class-quickjump-database.php   # Database CRUD operations
+│   ├── class-quickjump-menu.php       # Admin bar dropdown
+│   ├── class-quickjump-settings.php   # Settings page
+│   ├── class-quickjump-tracker.php    # Page visit tracking
+│   └── class-github-updater.php       # GitHub auto-updates
 └── languages
-	├── gf-french-schools-fr_FR.mo     # binaire FR
-	├── gf-french-schools-fr_FR.po     # sources FR
-	└── gf-french-schools.pot          # modèle de traduction
+    └── quickjump-admin.pot       # Translation template
 ```
 
-## API utilisée
+## Changelog
 
-- **Endpoint** : `https://data.education.gouv.fr/api/explore/v2.1/catalog/datasets/fr-en-annuaire-education/records`
-- **Documentation** : [OpenDataSoft API v2.1](https://help.opendatasoft.com/apis/ods-explore-v2/)
-- Aucune authentification requise
-- Gratuit et accessible publiquement
+### 1.1.0
+- **New:** Integrated Guilamu Bug Reporter support
+- **New:** Added "Report a Bug" link in plugins list
 
-## Contribuer
+### 1.0.1
+- **Fixed:** Shortcut menu now uses the same dark theme as the WordPress admin bar
 
-Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request sur [GitHub](https://github.com/guilamu/gf-french-schools).
+### 1.0.0
+- Initial release
+- **New:** Admin bar dropdown with hover activation
+- **New:** Recent and most-used page tracking
+- **New:** Pin/unpin functionality for favorite pages
+- **New:** Search within navigation history
+- **New:** Configurable settings page
+- **New:** GitHub auto-update support
+- **New:** Automatic data cleanup with retention settings
+- **New:** Tabbed settings interface
+- **New:** Quick action to hide links from menu
 
-## Licence
 
-Ce projet est sous licence **GNU Affero General Public License v3.0 (AGPL-3.0)**.
+## License
 
-Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0) - see the [LICENSE](LICENSE) file for details.
 
-```
-Copyright (C) 2024 Guilamu
+---
 
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-```
-
-## Auteur
-
-**Guilamu** - [GitHub](https://github.com/guilamu)
-
-## Remerciements
-
-- [Gravity Forms](https://www.gravityforms.com/) pour leur excellent framework de formulaires
-- [data.education.gouv.fr](https://data.education.gouv.fr/) pour l'API de l'annuaire des établissements scolaires
-
-## Change Log
-
-### Version 1.2.0 - 2026-01-18
-- Intégration du support Guilamu Bug Reporter
-- Ajout du lien "🐛 Report a Bug" dans la liste des extensions
-
-### Version 1.1.3 - 2026-01-06
-- Traduction de la description du plugin en français
-- Ajout du workflow GitHub Actions pour la création automatique des releases
-- Génération automatique du fichier ZIP avec le bon nommage de dossier
-
-### Version 1.1.1 - 2025-12-27
-- Option pour cacher le bloc de récapitulatif et fallback accessible directement dans le champ (Type Catégorie Nom)
-- Chaîne i18n pour le fallback "No" côté JS
-- Nettoyage cohérent des valeurs (nom/catégorie) stockées et affichées
-
-### Version 1.1.0 - 2025-12-27
-- Durcissement de la sécurité : validation du formulaire côté AJAX, whitelists statut/département, limite de requêtes filtrable
-- Requêtes frontend plus robustes : annulation des appels en cours, déduplication, timeouts configurables et retries avec backoff
-- Vérification de version minimale Gravity Forms et messages d'erreur plus clairs
-- Updater GitHub plus résilient (fallback copy/delete, logs en debug)
-- CSS admin extrait dans un fichier dédié (plus d'inline styles)
-
-### Version 1.0.4 - 2025-12-26
-- Amélioration des performances : le CSS pour les champs présélectionnés n'est plus chargé sur toutes les pages
-- Ajout d'une limite de requêtes (rate limiting) sur l'endpoint AJAX
-- Refactorisation du module de mise à jour GitHub avec mise en cache des requêtes API
-- Suppression du code mort (filtre de merge tag inutilisé)
-- Amélioration du contraste visuel entre les champs activés et désactivés
-- Mise à jour des fichiers de traduction
-
-### Version 1.0.3 - 2025-12-26
-- Version initiale
+<p align="center">
+  Made with love for the WordPress community
+</p>
