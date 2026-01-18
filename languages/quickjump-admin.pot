@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: QuickJump Admin 1.0.1\n"
+"Project-Id-Version: QuickJump Admin 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/guilamu/quickjump-admin/issues\n"
 "POT-Creation-Date: 2025-12-29T18:00:00+00:00\n"
 "MIME-Version: 1.0\n"
