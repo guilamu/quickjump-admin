@@ -92,7 +92,7 @@ A daily cron job automatically removes data older than the retention period (def
 
 ## Changelog
 
-### 1.1.0
+### 1.1.1
 - **New:** Integrated Guilamu Bug Reporter support
 - **New:** Added "Report a Bug" link in plugins list
 
@@ -121,3 +121,4 @@ This project is licensed under the GNU Affero General Public License v3.0 (AGPL-
 <p align="center">
   Made with love for the WordPress community
 </p>
+
