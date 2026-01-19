@@ -3,7 +3,7 @@
  * Plugin Name:       QuickJump Admin
  * Plugin URI:        https://github.com/guilamu/quickjump-admin
  * Description:       Navigate faster in WordPress admin with intelligent shortcuts to your recently and frequently accessed pages.
- * Version:           1.0.1
+ * Version:           1.1.1
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Guilamu
@@ -21,7 +21,50 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin constants
-define('QUICKJUMP_ADMIN_VERSION', '1.0.1');
+define('QUICKJUMP_ADMIN_VERSION', '1.1.1');
+
+/**
+ * Register with Guilamu Bug Reporter
+ */
+add_action('plugins_loaded', function () {
+    if (class_exists('Guilamu_Bug_Reporter')) {
+        Guilamu_Bug_Reporter::register(array(
+            'slug'        => 'quickjump-admin',
+            'name'        => 'QuickJump Admin',
+            'version'     => QUICKJUMP_ADMIN_VERSION,
+            'github_repo' => 'guilamu/quickjump-admin',
+        ));
+    }
+}, 20);
+
+/**
+ * Add "Report a Bug" link to plugin row meta.
+ *
+ * @param array  $links Plugin row links.
+ * @param string $file  Plugin file.
+ * @return array Modified links.
+ */
+add_filter('plugin_row_meta', function ($links, $file) {
+    if (plugin_basename(__FILE__) !== $file) {
+        return $links;
+    }
+
+    if (class_exists('Guilamu_Bug_Reporter')) {
+        $links[] = sprintf(
+            '<a href="#" class="guilamu-bug-report-btn" data-plugin-slug="quickjump-admin" data-plugin-name="%s">%s</a>',
+            esc_attr__('QuickJump Admin', 'quickjump-admin'),
+            esc_html__('🐛 Report a Bug', 'quickjump-admin')
+        );
+    } else {
+        $links[] = sprintf(
+            '<a href="%s" target="_blank">%s</a>',
+            'https://github.com/guilamu/guilamu-bug-reporter/releases',
+            esc_html__('🐛 Report a Bug (install Bug Reporter)', 'quickjump-admin')
+        );
+    }
+
+    return $links;
+}, 10, 2);
 define('QUICKJUMP_ADMIN_PATH', plugin_dir_path(__FILE__));
 define('QUICKJUMP_ADMIN_URL', plugin_dir_url(__FILE__));
 define('QUICKJUMP_ADMIN_BASENAME', plugin_basename(__FILE__));
