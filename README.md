@@ -92,6 +92,10 @@ A daily cron job automatically removes data older than the retention period (def
 
 ## Changelog
 
+### 1.1.2
+- **Improved:** Rewritten GitHub updater with README.md-based "View Details" modal
+- **New:** "View details" thickbox link in plugin row meta
+
 ### 1.1.1
 - **New:** Integrated Guilamu Bug Reporter support
 - **New:** Added "Report a Bug" link in plugins list
