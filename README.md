@@ -92,6 +92,9 @@ A daily cron job automatically removes data older than the retention period (def
 
 ## Changelog
 
+### 1.1.3
+- **Fixed:** The settings page tab script no longer hijacks tab clicks on other plugins' settings screens. `admin.js` loads on every wp-admin page so the shortcuts dropdown is always available, but its tab handler matched WordPress's bare `.nav-tab-wrapper` class instead of a QuickJump-specific one — on a page with its own tabbed settings screen, clicking a tab silently failed and the URL gained a stray `tab=undefined`. The handler is now scoped to QuickJump's own settings page.
+
 ### 1.1.2
 - **Improved:** Rewritten GitHub updater with README.md-based "View Details" modal
 - **New:** "View details" thickbox link in plugin row meta

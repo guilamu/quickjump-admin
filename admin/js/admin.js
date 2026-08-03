@@ -580,7 +580,13 @@
 	 */
 	const QuickJumpSettings = {
 		init: function () {
-			const $tabs = $('.nav-tab-wrapper .nav-tab');
+			// admin.js is enqueued on every wp-admin screen so the shortcuts dropdown is always
+			// available — this handler is the one part of the file meant only for QuickJump's own
+			// settings screen. `.nav-tab-wrapper` is bare WordPress core markup that any plugin's
+			// tabbed screen reuses, so the selector is scoped to QuickJump's own wrapper class
+			// rather than the generic one: matching on `.nav-tab-wrapper` alone previously hijacked
+			// the tab clicks on every other plugin's settings page as well.
+			const $tabs = $('.quickjump-nav-tab-wrapper .nav-tab');
 			if (!$tabs.length) return;
 
 			$tabs.on('click', function (e) {
@@ -589,7 +595,7 @@
 				const tab = $this.data('tab');
 
 				// Update active tab
-				$('.nav-tab-active').removeClass('nav-tab-active');
+				$tabs.removeClass('nav-tab-active');
 				$this.addClass('nav-tab-active');
 
 				// Update visible content

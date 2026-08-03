@@ -3,7 +3,7 @@
  * Plugin Name:       QuickJump Admin
  * Plugin URI:        https://github.com/guilamu/quickjump-admin
  * Description:       Navigate faster in WordPress admin with intelligent shortcuts to your recently and frequently accessed pages.
- * Version:           1.1.2
+ * Version:           1.1.3
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Guilamu
@@ -21,7 +21,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Plugin constants
-define('QUICKJUMP_ADMIN_VERSION', '1.1.2');
+define('QUICKJUMP_ADMIN_VERSION', '1.1.3');
 
 /**
  * Register with Guilamu Bug Reporter
